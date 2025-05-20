@@ -1,8 +1,5 @@
-# Inspired by https://github.com/microsoft/LLMLingua
 import logging
-import os
 from typing import List
-import numpy as np
 import torch
 import tiktoken
 from transformers import AutoConfig, AutoTokenizer, AutoModelForTokenClassification, AutoModelForCausalLM
@@ -26,7 +23,7 @@ class ContextRanker:
             if any(key in device_map for key in ["cuda", "cpu", "mps"])
             else "cuda"
         )
-        # self._load_model(self.model_name, model_config)
+        self._load_model(self.model_name, model_config)
 
     def _load_model(
         self, model_name: str,

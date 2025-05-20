@@ -1,4 +1,3 @@
-# Inspired by https://github.com/allenai/marg-reviewer
 import os
 
 import datetime
@@ -118,7 +117,7 @@ class BaseClient:
 
     def estimate_messages_num_tokens(self, messages: List[Dict], model: str) -> int:
         tokenizer = self._get_tokenizer(model)
-        tokens_per_message = 3  # 每条消息的固定token开销
+        tokens_per_message = 3
         tokens_per_name = 1
         num_tokens = 0
         for message in messages:
@@ -253,7 +252,6 @@ class BaseClient:
                 }
 
         if cache_json is None:
-            # 执行API请求
             model_keyvals = db_keyvals.copy()
             del model_keyvals["messages_json"]
             model_keyvals["messages"] = messages
@@ -263,8 +261,6 @@ class BaseClient:
                 while resp is None and max_retries >= 0:
                     max_retries -= 1
                     try:
-                        # print(self.openai_client.base_url)
-                        # print("{}".format(json.dumps(call_params)))
                         resp = self.openai_client.chat.completions.create(**call_params).model_dump()
                     except openai.RateLimitError:
                         time.sleep(60)
@@ -320,7 +316,6 @@ class BaseClient:
         return resp
 
     def get_token_usage(self, model: Optional[str] = None) -> Dict:
-        """获取Token使用统计"""
         cur = self.cache_db.cursor()
 
         query = "SELECT SUM(prompt_tokens), SUM(completion_tokens) FROM token_usage"

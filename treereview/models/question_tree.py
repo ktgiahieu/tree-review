@@ -31,7 +31,7 @@ class QuestionNode:
             "children": [child.to_dict() for child in self.children],
             "answer": self.answer,
             "answer_list": self.answer_list,
-            "is_follow_up": self.is_follow_up,  # 新增：存储追加问题标签
+            "is_follow_up": self.is_follow_up,
             "processed": self._processed,
             "parent_uuid": self.parent.uuid if self.parent else None
         }

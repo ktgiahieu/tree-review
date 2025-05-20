@@ -122,12 +122,11 @@ class ReviewPipeline:
             current_node, visited = self.answer_stack.pop()
             if visited:
                 if current_node.is_leaf():
-                    chunks = self.paper.chunks[:3]
-                    # chunks = self.context_ranker.rank_chunks(
-                    #     chunks=self.paper.chunks,
-                    #     question=current_node.question,
-                    #     top_k=self.config.retrieval_top_k
-                    # )
+                    chunks = self.context_ranker.rank_chunks(
+                        chunks=self.paper.chunks,
+                        question=current_node.question,
+                        top_k=self.config.retrieval_top_k
+                    )
 
                     answer = self.answer_synthesizer.summarize(
                         node_type="leaf",
