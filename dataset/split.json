@@ -1,0 +1,130 @@
+{
+    "full": {
+        "ICLR2024": {
+            "accept": [
+                "QQYpgReSRk",
+                "vBw8JGBJWj",
+                "dl0u4ODCuW",
+                "ZGNWW7xZ6Q",
+                "wZXlEFO3tZ",
+                "Tzh6xAJSll",
+                "msXxrttLOi",
+                "QQ6RgKYiQq",
+                "CanomFZssu",
+                "PP1rudnxiW",
+                "iAW2EQXfwb",
+                "xxaEhwC1I4",
+                "gHAr7ZA1OL",
+                "ziDFH8TPPK",
+                "pPjZIOuQuF",
+                "7etoNfU9uF",
+                "hj9ZuNimRl",
+                "uZfjFyPAvn",
+                "l3qtSNsPvC",
+                "tveiUXU2aa"
+            ],
+            "reject": [
+                "EHKS0oXuku",
+                "yJdj2QQCUB",
+                "z9Xb6fADe4",
+                "mFTPRV5hYw",
+                "hbsvyhznr4",
+                "9cumTvvlHG",
+                "zkE2js9qRe",
+                "bAXmvOLtjA",
+                "K8Mbkn9c4Q",
+                "x36mCqVHnk",
+                "WLgbjzKJkk",
+                "tWNHQq7gZX",
+                "KTq2XSBNsa",
+                "Pa4hecILrt",
+                "sFQe52N40m",
+                "KSvRZFCy7s",
+                "mYo9r0CwUf",
+                "hlj6HiGJeB",
+                "MBIGXMT0qC",
+                "wOb0xFwdpr"
+            ]
+        },
+        "NIPS2023": {
+            "accept": [
+                "BVN9Kgvwzv",
+                "hE5RWzQyvf",
+                "Jkc74vn1aZ",
+                "YeP8osxOht",
+                "I18BXotQ7j",
+                "D94QKZA7UP",
+                "9yhYcjsdab",
+                "IOuuLBrGJR",
+                "A4zzxu82a7",
+                "8JCZe7QrPy",
+                "tLEDsaKuDh",
+                "fwvfxDbUFw",
+                "5t5u8PQa2T",
+                "Y17N9B0vXn",
+                "4ZaPpVDjGQ",
+                "XH3ArccntI",
+                "rDiMgZulwi",
+                "hHv3UuffXV",
+                "G14N38AjpU",
+                "mcx8IGneYw"
+            ],
+            "reject": [
+                "SfXjt1FtMQ",
+                "8S6ZeKB8tu",
+                "T47mUw8pW4",
+                "QSJKrO1Qpy",
+                "9BV9dMhRjt",
+                "m2getD1hpk",
+                "yQSb1n56lE",
+                "RLJ8t01p0u",
+                "x1FgW3vSM6",
+                "Y8Jfbqx0bA",
+                "9SwKSvaCiP",
+                "dw6xO1Nbk5",
+                "a4kspTMV9M",
+                "Wp7TIOaDbb",
+                "TrcpLUcYfL",
+                "E8vGACczsQ",
+                "wv79UiY5U7",
+                "3S9Oiu6gMf",
+                "wS3PPBUDX8",
+                "ldulVsMDDk"
+            ]
+        }
+    },
+    "human_evaluation": {
+        "ICLR2024": {
+            "accept": [
+                "Tzh6xAJSll",
+                "ZGNWW7xZ6Q",
+                "PP1rudnxiW",
+                "uZfjFyPAvn",
+                "QQ6RgKYiQq"
+            ],
+            "reject": [
+                "Pa4hecILrt",
+                "KTq2XSBNsa",
+                "MBIGXMT0qC",
+                "sFQe52N40m",
+                "9cumTvvlHG"
+            ]
+        },
+        "NIPS2023": {
+            "accept": [
+                "Y17N9B0vXn",
+                "hHv3UuffXV",
+                "IOuuLBrGJR",
+                "9yhYcjsdab",
+                "D94QKZA7UP"
+            ],
+            "reject": [
+                "x1FgW3vSM6",
+                "ldulVsMDDk",
+                "SfXjt1FtMQ",
+                "TrcpLUcYfL",
+                "dw6xO1Nbk5"
+            ]
+        }
+    }
+}

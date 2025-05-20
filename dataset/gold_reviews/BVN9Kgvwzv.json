@@ -1,0 +1,78 @@
+{
+    "Decision": "Accept (poster)",
+    "Comment": "This paper proposes a clever idea for automatically constructing extractive QA\ndata from Wikipedia. Pre-training a MLM on this data leads to improved\nperformance, especially (unsurprisingly, given the lack of data) in lower-\nresource settings.\n\nFor this paper we had some issues getting the reviewers in place, leading to a\nlarger number of reviews. The lowest score is also the lowest quality review\nand did not engage with the author response (I read the response, and think it\nalleviates most of the concerns). Overall, the majority of reviewers leans\npositive and I am inclined to agree.",
+    "reviews": [
+        {
+            "Summary": "The paper proposed a Pre-trained Machine Reader to close the gap the gap between pretraining and finetuning.",
+            "Strengths": "This paper presents a comprehensive and novel method to tackle the extractive tasks by pretraining a reader from curated large corpus from wikipedia. The methodology is sound to the specific task and the results are solid and strong.",
+            "Weaknesses": "This paper and the methodology mostly focus on the extractive tasks instead of generative tasks, limiting its scope and applicability.",
+            "Questions": "Why does the model generalize to unseen domains? Any insights or explaination?",
+            "Limitations": "n/a",
+            "Soundness": "3 good",
+            "Presentation": "3 good",
+            "Contribution": "3 good",
+            "Confidence": "3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.",
+            "Rating": "6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations."
+        },
+        {
+            "Summary": "To improve the performance of tasks that can be formulated as span extraction (e.g., extractive MRC and NER), especially in low-resource settings, this paper proposes to automatically construct data MRC-style data based on Wikipedia for model pre-training. Another advantage of this proposed method is that when applied to classification tasks, spans that can be used to explain the answer will be extracted for better explainability.",
+            "Strengths": "1. Several backbone models are used for comparison.\n   2. The authors show MRC-style formulation can address several types of NLP tasks.",
+            "Weaknesses": "1. The proposed work focuses on tasks that can be formatted as MRC tasks. The transformation may be not efficient (e.g., several follow-up questions may be asked and answered to arrive at the final solution) or effective for tasks that involve complex structures or a large number of types such as fine-grained NER, event extraction, and text generation tasks.\n   2. It may be useful to explore other types of models such as decoder-only and encoder-decoder models. \n   3. Evaluation: it might be better if the authors can compare the proposed method PMR with previous ones on these datasets. Are these baselines reported in Table 1 and Table 2 implemented by the authors? If not, references should be clearly stated. If the CoNLL refers to CoNLL-03, UIE only reports one/five/ten-shot results (46.43/67.09/73.9) on this dataset. This paper starts with four-shot experiments (65.7), making results not easily compared.",
+            "Questions": "Please check the above comments.",
+            "Limitations": "The proposed work focuses on tasks that can be easily formatted as MRC tasks.",
+            "Soundness": "3 good",
+            "Presentation": "3 good",
+            "Contribution": "2 fair",
+            "Confidence": "3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.",
+            "Rating": "4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly."
+        },
+        {
+            "Summary": "The paper proposes Pre-trained Machine Reader (PMR) which allows for retrofitting MLMs for better transferability to downstream tasks, especially under low-resource scenarios. PMR introduces an MRC-style head on top of MLMs and is pre-trained with a large volume of MRC-style data constructed from Wikipedia anchors and hyperlinks. The pertaining task (Wiki Anchor Extraction (WAE)) is to determine if the context and the query are relevant, and if so answer extraction from the context. PMR is evaluated on span extraction tasks like named entity recognition (NER) and extractive question answering (EQA). It achieves significantly better performance than vanilla MLMs under low- resource settings.",
+            "Strengths": "The idea of using Wikipedia anchors to construct MRC-style data is interesting, and the paper is well-written. The results show that PMR performs significantly better than vanilla MLMs under low-resource settings.",
+            "Weaknesses": "It is unclear to me if the gains come from the WAE pretraining task itself or just having more MRC-style training data. The performance gains could stem from PMR having access to orders of magnitude more MRC examples during training with WAE rather than WAE specifically being a better task. Comparing WAE pretraining to an equivalent amount of pretraining data from existing MRC datasets would better isolate the impact of the pretraining task design and Wikipedia data.",
+            "Questions": "does WAE training return better performance on downstream tasks than training on other MRC tasks on the same amount of data ? I want to know this to see WAE pretraining task is a better task, or if gains could be matched by an equivalent amount of pretraining data using other tasks such as NER.",
+            "Limitations": "Please add a limitations section.",
+            "Soundness": "3 good",
+            "Presentation": "3 good",
+            "Contribution": "3 good",
+            "Confidence": "3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.",
+            "Rating": "7: Accept: Technically solid paper, with high impact on at least one sub-area, or moderate-to-high impact on more than one areas, with good-to- excellent evaluation, resources, reproducibility, and no unaddressed ethical considerations."
+        },
+        {
+            "Summary": "The paper introduces PMR, a pretrained machine reader. PMR combines a MLM and extractor modules in an MRC-style using a synthetic dataset from Wikipedia in order to bring the gap between pretrain and finetuning for span extraction tasks. Experimental results in few shot settings across various benchmarks (EQA, NER, Sequence classification) highlight PMR's effectiveness compared to similarly sized MLM models. Furthermore, PMR's performance in out-of- distribution (OOD) scenarios is demonstrated through additional experiments.",
+            "Strengths": "* Motivations are clear and narrow their contributions to a specific field (Span extraction)   * The construction of a synthetic dataset from Wikipedia for MRC-style pretraining looks interesting.   * The proposed method is tested on several benchmarks.   * The paper is easy to read, and generally well-written.",
+            "Weaknesses": "* Authors decided not to include LLMs as baselines for generative finetuning approaches, however, there are smaller versions e.g. opt-350m, T5Flan-small, etc.    * The paper presents experiments on EQA for a medium-big number of shots. I would suggest adding results for 4 and 8 samples to verify if the number of few shot examples affects the performance of PMR in comparison to the other baselines.   * (Minor) It will be better if the authors mention limitations in the main section of the paper as is important for readers to quickly notice the limitations of the work.",
+            "Questions": "As mentioned in the weakness:\n   * I would suggest adding baselines for small versions of LLMs to make the paper more solid.   * Also include experiments in smaller few-shot settings for EQA benchmarks.   * (Minor) Include limitations in the main section of the paper.",
+            "Limitations": "Yes",
+            "Soundness": "3 good",
+            "Presentation": "4 excellent",
+            "Contribution": "3 good",
+            "Confidence": "4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",
+            "Rating": "7: Accept: Technically solid paper, with high impact on at least one sub-area, or moderate-to-high impact on more than one areas, with good-to- excellent evaluation, resources, reproducibility, and no unaddressed ethical considerations."
+        },
+        {
+            "Summary": "This work aims to retrofit pre-trained language models to pre-trained machine reading comprehension models by constructing training data from Wikipedia. This technique can alleviate the discrepancy between pre-trained models and downstream tasks, especially extraction-based tasks. Specifically, the anchors of Wikipedia articles are leveraged. The definition of the anchor entity is regarded as query while the surrounding text of the anchor is regarded as context. The PMR obtains state-of-the-art performance on several datasets of NER and EQA under few-shot setting.",
+            "Strengths": "1. The proposed pre-trained machine reader achieved state-of-the-art performance on few-shot NER task and few-shot Extractive Question Answering task. The retrofitted pre-trained machine reader has competitive OOD generalization ability as T5-v1.1.    2. Extensive experiments were conducted to prove the effectiveness of the retrofitting method. Also, the experiments on explainability were also interesting.   3. It is interesting to integrate the unanswerable examples into the pre-training.",
+            "Weaknesses": "There are no major weaknesses. However, there are several comments here.\n   1. I think that the comparison with fewshotBART is not that direct. Even though fewshotBART and PMR were both designed for bridging the gaps between pre-training and fine-tuning. However, the PMR leveraged extra training data (unlabeled) while fewshotBART improved the input-output format without further pre-training. So it seems that for extremely low-resource setting, the fewshowBART has more advantages (no need for extra training).   2. The idea is quite similar to Splinter. In the related work, it would improve the paper if the authors can better explain the differences. E.g. These two works both use the entity recurring for constructing the dataset. Difference: For Splinter, it leverages the recurring of the original paragraph, while for PMR, a synthetic paragraph (abstract of entity + original paragraph) is constructed.    3. It would be great if the model size of the existing work can be shown in the table 1, for a more fair comparison. E.g. in the fewshotBART paper, they used the base model (6 layers of encoder and 6 layers of decoder -- 12 layers in total) -- which should be compared to PMR_base model.",
+            "Questions": "Is simple string matching used for finding other mentions of anchor entity in text?",
+            "Limitations": "No limitation is discussed in this work. No potential negative societal impact.",
+            "Soundness": "3 good",
+            "Presentation": "3 good",
+            "Contribution": "3 good",
+            "Confidence": "5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.",
+            "Rating": "6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations."
+        },
+        {
+            "Summary": "* Summary:\n This paper presents a novel pretraining method for span-extraction tasks, such as machine reading comprehension and NER. By appending labels to the inputs, classification tasks can also be solved in span-extraction way.\n   * Method:\n This paper proposes to use the hyper links in wikipedia to construct a large scale dataset for span-extraction pretraining. By continue training a pretrained MLM model with the constructed data, the model can learn to extract entity spans given the entity description and the mention article.\n   * Experiments:\n By pretraining RoBERTa with their constructed dataset, various machine reading comprehension tasks and NER tasks are improved. Also, by applying their model to test classification tasks, their model can extract the supporting span for classification.",
+            "Strengths": "* The data for pretraining is collected unsupervisely, which make the data collection process more attractive to inspire other research work.    * The proposed method is straightforward and effective. The evaluation and results are comprehensive.",
+            "Weaknesses": "* The constructed dataset can also be used to finetune seq2seq model like T5 for span-extraction. But only MLM models are covered in this work.   * This paper claims their model support both span extraction and classification tasks. But there are less classification experiments in this submission. For example, full-resource results on classification.",
+            "Questions": "1. For an article with multiple different hyperlink anchors, which one is used when building the pretraining dataset?   2. Many downstream tasks are evaluated in this paper. Can you discuss the SOTA method/model for each of them? such as the advantage and disadvantage of the proposed method compared to these SOTA method/models?   3. Can you discuss if there is a domain issue of the proposed method? as the pretraining data is only from wikipedia.",
+            "Limitations": "limitations discussed in the appendix",
+            "Soundness": "3 good",
+            "Presentation": "3 good",
+            "Contribution": "3 good",
+            "Confidence": "4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",
+            "Rating": "5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly."
+        }
+    ]
+}
