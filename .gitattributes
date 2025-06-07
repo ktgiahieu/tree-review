@@ -1,0 +1,3 @@
+requirements.txt linguist-documentation
+*.md linguist-documentation
+dataset/papers_mmd/*.mmd linguist-vendored
