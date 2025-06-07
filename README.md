@@ -1,7 +1,7 @@
 # TreeReview
 
 
-This repository contains the implementation code for the submission *"TreeReview: A Dynamic Tree of Questions Framework for Deep and Efficient LLM-based Scientific Peer Review"*. It provides a framework for generating comprehensive and in-depth peer reviews using Large Language Models (LLMs) through a hierarchical question-answering process.
+This repository contains the implementation code and benchmark dataset for the paper *"TreeReview: A Dynamic Tree of Questions Framework for Deep and Efficient LLM-based Scientific Peer Review"*. It provides a framework for generating comprehensive and in-depth peer reviews using Large Language Models (LLMs) through a hierarchical question-answering process.
 
 ## Setup
 1. **Create a Conda Environment**:
