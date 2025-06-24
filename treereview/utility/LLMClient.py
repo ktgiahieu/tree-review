@@ -18,7 +18,7 @@ class BaseClient:
             self,
             base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai/",
             api_key: str = None,
-            default_model: str = "gemini-2.0-flash",
+            default_model: str = "gemini-2.0-flash-001",
             default_temperature: Optional[float] = 0.0,
             default_top_p: Optional[float] = 1.0,
             default_max_tokens: Optional[int] = 32768,
@@ -209,7 +209,7 @@ class BaseClient:
             "temperature": temperature or self.default_params["temperature"],
             "top_p": top_p or self.default_params["top_p"],
             "max_tokens": max_tokens or self.default_params["max_tokens"],
-            "frequency_penalty": frequency_penalty or self.default_params["frequency_penalty"],
+            # "frequency_penalty": frequency_penalty or self.default_params["frequency_penalty"],
             "presence_penalty": presence_penalty or self.default_params["presence_penalty"],
         }
 
@@ -233,9 +233,8 @@ class BaseClient:
                 ((:messages_token_count+max_tokens) > total_tokens or max_tokens = :max_tokens) and
                 total_tokens <= (:messages_token_count+:max_tokens) and
                 top_p = :top_p and
-                frequency_penalty = :frequency_penalty and
                 presence_penalty = :presence_penalty
-                """,
+                """, #deleted frequency_penalty = :frequency_penalty and
                 select_keyvals
             ).fetchall()
 
@@ -257,26 +256,27 @@ class BaseClient:
             model_keyvals["messages"] = messages
             call_params = model_keyvals.copy()
             resp = None
-            if max_retries > 0:
-                while resp is None and max_retries >= 0:
-                    max_retries -= 1
-                    try:
-                        resp = self.openai_client.chat.completions.create(**call_params).model_dump()
-                    except openai.RateLimitError:
-                        time.sleep(60)
-                    except openai.APIError as e:
-                        if e.code == 502:
-                            time.sleep(10)
-                        elif e.code in ["RequestTimeOut", 400]:
-                            time.sleep(10)
-                        else:
-                            time.sleep(10)
-                    except openai.APITimeoutError as e:
-                        time.sleep(10)
-                    except openai.BadRequestError as e:
-                        pass
-            else:
-                resp = self.openai_client.chat.completions.create(**call_params).model_dump()
+            resp = self.openai_client.chat.completions.create(**call_params).model_dump()
+            # if max_retries > 0:
+            #     while resp is None and max_retries >= 0:
+            #         max_retries -= 1
+            #         try:
+            #             resp = self.openai_client.chat.completions.create(**call_params).model_dump()
+            #         except openai.RateLimitError:
+            #             time.sleep(60)
+            #         except openai.APIError as e:
+            #             if e.code == 502:
+            #                 time.sleep(10)
+            #             elif e.code in ["RequestTimeOut", 400]:
+            #                 time.sleep(10)
+            #             else:
+            #                 time.sleep(10)
+            #         except openai.APITimeoutError as e:
+            #             time.sleep(10)
+            #         except openai.BadRequestError as e:
+            #             pass
+            # else:
+            #     resp = self.openai_client.chat.completions.create(**call_params).model_dump()
 
             insert_keyvals = db_keyvals.copy()
             cache_json = json.dumps(resp)
